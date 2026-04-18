@@ -27,8 +27,8 @@ Content-Type: application/json
 { 
     "firstname":"ishu",
     "lastname":"chirra",
-    "email":"ishu23@example.com",
-    "password":"author",
+    "email":"ravi@123",
+    "password":"ravi",
     "profileImageUrl":"http://exmaple.com/avatars/author.png"
 }     
 
@@ -38,9 +38,8 @@ POST http://localhost:4000/common-api/login
 Content-Type: application/json
 
 {
-    "email":"ishu23@example.com",
-    "password":"author"
-
+    "email":"ravi@123",
+    "password":"ravi"
 }
 
    
@@ -49,12 +48,14 @@ post http://localhost:4000/author-api/articles
 Content-Type: application/json
 
 {
-    "author":"698c8c23d217c96b416e00d9",
-    "title":"test1",
-    "category":"gaming",
-    "content":"content ot test1 article"
-
+    "author": "69aeed1e43931c8a23d6c54e",
+    "title": "Sample Article",
+    "category": "Tech",
+    "content": "This is a sample article content."
 }
+
+### get all users (debug)
+GET http://localhost:4000/common-api/users
 
 
 ###read articles
@@ -62,17 +63,27 @@ GET http://localhost:4000/author-api/articles/698c8c23d217c96b416e00d9
 
 
 ### update article
-PUT http://localhost:4000/author-api/article/698c936ab992d6c2e237aae2
+PUT http://localhost:4000/author-api/articles
 Content-Type: application/json
 
 {
-    "author":"698c8c23d217c96b416e00d9",
-    "articleId":"698c936ab992d6c2e237aae2",
+    "author":"69aeed1e43931c8a23d6c54e",
+    "articleId":"69aeeeb543931c8a23d6c560",
     "title":"test1",
     "category":"gaming",
     "content":"content ot test1 article"
 
 }
+
+
+### delete the article
+PATCH http://localhost:4000/author-api/articles/69aeed1e43931c8a23d6c54e/status
+Content-Type: application/json
+
+{
+  "isArticleActive": false
+}
+
 
 ###logout
 GET http://localhost:4000/common-api/logout
@@ -95,6 +106,17 @@ Content-Type: application/json
     "newPassword":"newpassword"
 }
 
+###comments to the article
+PUT http://localhost:4000/user-api/articles/69aeeeb543931c8a23d6c560/comments
+Content-Type: application/json
+
+{
+  "user":"698c8c23d217c96b416e00d9",
+  "comment":"good"
+}
+
+###for restoring the login
+GET http://localhost:4000/common-api/check-auth
 
 
 ###test
